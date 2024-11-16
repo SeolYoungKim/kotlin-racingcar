@@ -1,4 +1,4 @@
-package calculator
+package stringcalculator
 
 class NumberCalculator {
     fun sum(left: Int, right: Int): Int {
