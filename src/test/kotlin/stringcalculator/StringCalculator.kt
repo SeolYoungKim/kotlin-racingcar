@@ -1,12 +1,39 @@
 package stringcalculator
 
-import java.util.regex.Pattern
+class StringCalculator(
+    private val numberCalculator: NumberCalculator = NumberCalculator(),
+) {
+    private val allowedOperators = setOf("+", "-", "*", "/")
+    private val regex: Regex
 
-class StringCalculator {
-    private val pattern: Pattern = Pattern.compile("^\\s*\\d+(\\s*[-+*/]\\s*\\d+)*\\s*\$")
+    init {
+        this.regex = buildRegexForOperators()
+    }
 
-    fun calculate(input: String?) {
+    private fun buildRegexForOperators(): Regex {
+        val operators = allowedOperators.joinToString(prefix = "\\", separator = "\\")
+        return "^\\s*\\d+\\s[$operators]\\s\\d+(\\s[$operators]\\s\\d+)*\\s*$".toRegex()
+    }
+
+    fun calculate(input: String?): Int {
         validate(input)
+        val strings = convertToList(input!!)
+
+        var leftNumber = strings[0].toInt()
+        var result = 0
+        for (idx in 1 until strings.size step 2) {
+            val operator = strings[idx]
+            val rightNumber = strings[idx + 1].toInt()
+
+            result = numberCalculator.calculate(leftNumber, Operator.fromSequence(operator), rightNumber)
+            leftNumber = result
+        }
+
+        return result
+    }
+
+    private fun convertToList(input: String): List<String> {
+        return input.trim().split(" ")
     }
 
     private fun validate(input: String?) {
@@ -14,16 +41,16 @@ class StringCalculator {
             throw IllegalArgumentException("입력값이 null이나 공백일 수 없습니다.")
         }
 
-        if (pattern.matcher(input).matches().not()) {
+        if (regex.matches(input).not()) {
             throw IllegalArgumentException(
                 """
                     입력 형태 또는 사용된 연산자가 잘못되었습니다.
                     - 현재 입력 : $input
-                    - 사용 가능한 연산자 : +, -, *, /
+                    - 사용 가능한 연산자 : $allowedOperators
+                    - 숫자와 연산자 사이에 공백이 반드시 하나 있어야 합니다 
                     - 입력 예: 2 + 3 * 4 / 2
                 """.trimIndent()
             )
         }
     }
-
 }

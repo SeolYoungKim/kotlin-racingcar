@@ -1,6 +1,5 @@
 package study
 
-import org.assertj.core.api.Assertions
 import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertAll
@@ -53,6 +52,30 @@ class KotlinLearningTest {
             { assertThat(dataPerson1).isEqualTo(dataPerson2) },
             { assertThat(dataPerson1).isNotEqualTo(dataPerson3) },
         )
+    }
+
+    @Test
+    fun `String join`() {
+        val operators = setOf("+", "-", "*", "/")
+
+        val joinToString = operators.joinToString(prefix = "\\", separator = "\\")
+
+        assertThat(joinToString).isEqualTo("\\+\\-\\*\\/")
+    }
+
+    @Test
+    fun `until and step`() {
+        val strings = listOf("1", "2", "3", "4", "5", "6", "7", "8", "9")
+
+        val result1 = mutableListOf<Int>()
+        for (i in 1 until strings.size step 2) {
+            result1.add(i)
+        }
+
+        val result2 = (1 until strings.size step 2).toList()
+
+        assertThat(result1).isEqualTo(listOf(1, 3, 5, 7))
+        assertThat(result2).isEqualTo(listOf(1, 3, 5, 7))
     }
 }
 
