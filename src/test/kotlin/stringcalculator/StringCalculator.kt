@@ -3,15 +3,11 @@ package stringcalculator
 class StringCalculator(
     private val numberCalculator: NumberCalculator = NumberCalculator(),
 ) {
-    private val allowedOperators = setOf("+", "-", "*", "/")
-    private val regex: Regex
-
-    init {
-        this.regex = buildRegexForOperators()
-    }
+    private val allowedOperators = setOf(Operator.PLUS, Operator.MINUS, Operator.MULTIPLY, Operator.DIVIDE)
+    private val regex: Regex = buildRegexForOperators()
 
     private fun buildRegexForOperators(): Regex {
-        val operators = allowedOperators.joinToString(prefix = "\\", separator = "\\")
+        val operators = allowedOperators.joinToString(prefix = "\\", separator = "\\") { operator -> operator.sequence }
         return "^\\s*\\d+\\s[$operators]\\s\\d+(\\s[$operators]\\s\\d+)*\\s*$".toRegex()
     }
 

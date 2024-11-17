@@ -12,9 +12,9 @@ class NumberCalculator {
     fun calculate(leftNumber: Int, operator: Operator, rightNumber: Int): Int {
         return when (operator) {
             Operator.PLUS -> sum(leftNumber, rightNumber)
-            Operator.MINUS -> leftNumber - rightNumber
-            Operator.MULTIPLY -> leftNumber * rightNumber
-            Operator.DIVIDE -> leftNumber / rightNumber
+            Operator.MINUS -> subtract(leftNumber, rightNumber)
+            Operator.MULTIPLY -> multiply(leftNumber, rightNumber)
+            Operator.DIVIDE -> divide(leftNumber, rightNumber)
         }
     }
 }
