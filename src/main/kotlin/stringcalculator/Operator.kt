@@ -1,7 +1,10 @@
 package stringcalculator
 
 enum class Operator(val sequence: String) {
-    PLUS("+"), MINUS("-"), MULTIPLY("*"), DIVIDE("/"),;
+    PLUS("+"),
+    MINUS("-"),
+    MULTIPLY("*"),
+    DIVIDE("/"), ;
 
     companion object {
         fun fromSequence(sequence: String): Operator {

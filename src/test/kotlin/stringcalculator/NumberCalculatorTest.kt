@@ -49,7 +49,12 @@ class NumberCalculatorTest {
         "2, MULTIPLY, 2, 4",
         "2, DIVIDE, 2, 1",
     )
-    fun `입력된 연산자에 해당하는 연산을 수행한다`(leftNumber: Int, operator: Operator, rightNumber: Int, expected: Int) {
+    fun `입력된 연산자에 해당하는 연산을 수행한다`(
+        leftNumber: Int,
+        operator: Operator,
+        rightNumber: Int,
+        expected: Int,
+    ) {
         val numberCalculator = NumberCalculator()
 
         val actual = numberCalculator.calculate(leftNumber, operator, rightNumber)

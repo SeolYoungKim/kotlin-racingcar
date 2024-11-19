@@ -7,11 +7,12 @@ import org.junit.jupiter.api.assertAll
 class KotlinLearningTest {
     @Test
     fun `named arguments`() {
-        val people = listOf(
-            Person("김설영", 100, "딱구"),
-            Person("김설영", 100, nickname = "딱구"),
-            Person(nickname = "딱구", name = "김설영", age = 100)
-        )
+        val people =
+            listOf(
+                Person("김설영", 100, "딱구"),
+                Person("김설영", 100, nickname = "딱구"),
+                Person(nickname = "딱구", name = "김설영", age = 100),
+            )
 
         assertThat(people).allSatisfy {
             assertThat(it.name).isEqualTo("김설영")
@@ -78,4 +79,3 @@ class KotlinLearningTest {
         assertThat(result2).isEqualTo(listOf(1, 3, 5, 7))
     }
 }
-

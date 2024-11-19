@@ -40,12 +40,12 @@ class StringCalculator(
         if (regex.matches(input).not()) {
             throw IllegalArgumentException(
                 """
-                    입력 형태 또는 사용된 연산자가 잘못되었습니다.
-                    - 현재 입력 : $input
-                    - 사용 가능한 연산자 : $allowedOperators
-                    - 숫자와 연산자 사이에 공백이 반드시 하나 있어야 합니다 
-                    - 입력 예: 2 + 3 * 4 / 2
-                """.trimIndent()
+                입력 형태 또는 사용된 연산자가 잘못되었습니다.
+                - 현재 입력 : $input
+                - 사용 가능한 연산자 : $allowedOperators
+                - 숫자와 연산자 사이에 공백이 반드시 하나 있어야 합니다 
+                - 입력 예: 2 + 3 * 4 / 2
+                """.trimIndent(),
             )
         }
     }
