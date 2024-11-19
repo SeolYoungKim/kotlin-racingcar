@@ -10,31 +10,28 @@ class StringCalculator {
     }
 
     fun calculate(input: String?): Int {
-        validate(input)
-        val strings = convertToList(input!!)
+        return input?.let {
+            validateFormat(input)
+            val strings = convertToList(input)
 
-        var leftNumber = strings[0].toInt()
-        var result = 0
-        for (idx in 1 until strings.size step 2) {
-            val operator = strings[idx]
-            val rightNumber = strings[idx + 1].toInt()
+            var leftNumber = strings[0].toInt()
+            var result = 0
+            for (idx in 1 until strings.size step 2) {
+                val operator = strings[idx]
+                val rightNumber = strings[idx + 1].toInt()
 
-            result = NumberCalculator.calculate(leftNumber, Operator.fromSequence(operator), rightNumber)
-            leftNumber = result
-        }
-
-        return result
+                result = NumberCalculator.calculate(leftNumber, Operator.fromSequence(operator), rightNumber)
+                leftNumber = result
+            }
+            return result
+        } ?: throw IllegalArgumentException("입력 값은 null일 수 없습니다.")
     }
 
     private fun convertToList(input: String): List<String> {
         return input.trim().split(" ")
     }
 
-    private fun validate(input: String?) {
-        if (input.isNullOrBlank()) {
-            throw IllegalArgumentException("입력값이 null이나 공백일 수 없습니다.")
-        }
-
+    private fun validateFormat(input: String) {
         if (regex.matches(input).not()) {
             throw IllegalArgumentException(
                 """
