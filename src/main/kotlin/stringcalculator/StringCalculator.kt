@@ -1,5 +1,7 @@
 package stringcalculator
 
+private const val START_INDEX = 0
+
 class StringCalculator {
     private val allowedOperators = setOf(Operator.PLUS, Operator.MINUS, Operator.MULTIPLY, Operator.DIVIDE)
     private val regex: Regex = buildRegexForOperators()
@@ -14,7 +16,7 @@ class StringCalculator {
             validateFormat(input)
             val strings = convertToList(input)
 
-            var leftNumber = strings[0].toInt()
+            var leftNumber = strings[START_INDEX].toInt()
             var result = 0
             for (idx in 1 until strings.size step 2) {
                 val operator = strings[idx]
