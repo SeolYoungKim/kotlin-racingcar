@@ -1,6 +1,6 @@
 package stringcalculator
 
-class NumberCalculator {
+object NumberCalculator {
     fun sum(
         left: Int,
         right: Int,

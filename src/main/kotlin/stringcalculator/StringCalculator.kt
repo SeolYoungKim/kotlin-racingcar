@@ -1,8 +1,6 @@
 package stringcalculator
 
-class StringCalculator(
-    private val numberCalculator: NumberCalculator = NumberCalculator(),
-) {
+class StringCalculator {
     private val allowedOperators = setOf(Operator.PLUS, Operator.MINUS, Operator.MULTIPLY, Operator.DIVIDE)
     private val regex: Regex = buildRegexForOperators()
 
@@ -21,7 +19,7 @@ class StringCalculator(
             val operator = strings[idx]
             val rightNumber = strings[idx + 1].toInt()
 
-            result = numberCalculator.calculate(leftNumber, Operator.fromSequence(operator), rightNumber)
+            result = NumberCalculator.calculate(leftNumber, Operator.fromSequence(operator), rightNumber)
             leftNumber = result
         }
 

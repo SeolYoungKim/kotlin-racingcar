@@ -8,36 +8,28 @@ import org.junit.jupiter.params.provider.CsvSource
 class NumberCalculatorTest {
     @Test
     fun `덧셈을 수행한다`() {
-        val numberCalculator = NumberCalculator()
-
-        val result = numberCalculator.sum(1, 2)
+        val result = NumberCalculator.sum(1, 2)
 
         assertThat(result).isEqualTo(3)
     }
 
     @Test
     fun `뺄셈을 수행한다`() {
-        val numberCalculator = NumberCalculator()
-
-        val result = numberCalculator.subtract(1, 2)
+        val result = NumberCalculator.subtract(1, 2)
 
         assertThat(result).isEqualTo(-1)
     }
 
     @Test
     fun `곱셈을 수행한다`() {
-        val numberCalculator = NumberCalculator()
-
-        val result = numberCalculator.multiply(1, 2)
+        val result = NumberCalculator.multiply(1, 2)
 
         assertThat(result).isEqualTo(2)
     }
 
     @Test
     fun `나눗셈을 수행한다`() {
-        val numberCalculator = NumberCalculator()
-
-        val result = numberCalculator.divide(2, 2)
+        val result = NumberCalculator.divide(2, 2)
 
         assertThat(result).isEqualTo(1)
     }
@@ -55,9 +47,7 @@ class NumberCalculatorTest {
         rightNumber: Int,
         expected: Int,
     ) {
-        val numberCalculator = NumberCalculator()
-
-        val actual = numberCalculator.calculate(leftNumber, operator, rightNumber)
+        val actual = NumberCalculator.calculate(leftNumber, operator, rightNumber)
 
         assertThat(actual).isEqualTo(expected)
     }
