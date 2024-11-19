@@ -1,6 +1,7 @@
 package stringcalculator
 
 private const val START_INDEX = 0
+private const val FIRST_OPERATOR_INDEX = 1
 
 class StringCalculator {
     private val allowedOperators = setOf(Operator.PLUS, Operator.MINUS, Operator.MULTIPLY, Operator.DIVIDE)
@@ -18,7 +19,7 @@ class StringCalculator {
 
             var leftNumber = strings[START_INDEX].toInt()
             var result = 0
-            for (idx in 1 until strings.size step 2) {
+            for (idx in FIRST_OPERATOR_INDEX until strings.size step 2) {
                 val operator = strings[idx]
                 val rightNumber = strings[idx + 1].toInt()
 
