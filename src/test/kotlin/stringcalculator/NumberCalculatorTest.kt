@@ -34,6 +34,12 @@ class NumberCalculatorTest {
         assertThat(result).isEqualTo(1)
     }
 
+    @Test
+    fun `나눗셈 수행 시 right 값이 0일 경우 예외를 발생시킨다`() {
+        assertThatThrownBy { NumberCalculator.divide(2, 0) }
+            .isExactlyInstanceOf(IllegalArgumentException::class.java)
+    }
+
     @ParameterizedTest
     @CsvSource(
         "2, PLUS, 2, 4",
