@@ -3,6 +3,9 @@ package stringcalculator
 private const val START_INDEX = 0
 private const val FIRST_OPERATOR_INDEX = 1
 
+/**
+ * [Null 체크 주의사항](https://hyeon9mak.github.io/using-kotlin-scope-function-correctly/#-null-%EC%B2%B4%ED%81%AC-%EC%A3%BC%EC%9D%98%EC%82%AC%ED%95%AD)
+ */
 class StringCalculator {
     private val allowedOperators = setOf(Operator.PLUS, Operator.MINUS, Operator.MULTIPLY, Operator.DIVIDE)
     private val regex: Regex = buildRegexForOperators()
