@@ -1,4 +1,4 @@
-package racingcar.application
+package racingcar.ui
 
 import racingcar.domain.Car
 

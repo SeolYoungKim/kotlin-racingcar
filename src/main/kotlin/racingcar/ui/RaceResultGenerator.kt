@@ -1,4 +1,6 @@
-package racingcar.domain
+package racingcar.ui
+
+import racingcar.domain.Car
 
 object RaceResultGenerator {
     private const val NAME_POSITION_SEPARATOR = " : "
