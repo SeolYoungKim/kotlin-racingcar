@@ -1,6 +1,6 @@
 package racingcar
 
-import racingcar.domain.RacingCarGame
+import racingcar.application.RacingCarGame
 
 fun main() {
     RacingCarGame.start()

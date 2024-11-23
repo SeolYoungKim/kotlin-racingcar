@@ -1,5 +1,8 @@
-package racingcar.domain
+package racingcar.application
 
+import racingcar.domain.Car
+import racingcar.domain.CarFactory
+import racingcar.domain.ResultGenerator
 import racingcar.ui.MessagePrinter
 import racingcar.ui.NumberReader
 import kotlin.random.Random
@@ -17,19 +20,7 @@ object RacingCarGame {
 
         val moveAttemptCount = readMoveAttemptCount()
 
-        MessagePrinter.print(RESULT_MESSAGE)
-
-        val results = mutableListOf<String>()
-        for (i in 1..moveAttemptCount) {
-            cars.forEach { car ->
-                val randomNumber = Random.nextInt(RANDOM_UPPER_BOUND)
-                car.moveOrStay(randomNumber)
-            }
-            val result = ResultGenerator.generate(cars)
-            results.add(result)
-        }
-
-        MessagePrinter.print(results)
+        runRace(moveAttemptCount, cars)
     }
 
     private fun readCarCount(): Int {
@@ -41,5 +32,18 @@ object RacingCarGame {
         MessagePrinter.print(MOVE_ATTEMPT_COUNT_QUESTION)
         val moveAttemptCount = NumberReader.read()
         return moveAttemptCount
+    }
+
+    private fun runRace(moveAttemptCount: Int, cars: List<Car>) {
+        MessagePrinter.print(RESULT_MESSAGE)
+
+        val results = (1..moveAttemptCount).map {
+            cars.forEach { car ->
+                car.moveOrStay(Random.nextInt(RANDOM_UPPER_BOUND))
+            }
+            ResultGenerator.generate(cars)
+        }
+
+        MessagePrinter.print(results)
     }
 }
