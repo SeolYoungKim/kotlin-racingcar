@@ -1,7 +1,10 @@
 package racingcar
 
 import racingcar.application.RacingCarGame
+import racingcar.ui.MessagePrinterImpl
+import racingcar.ui.NumberReaderImpl
 
 fun main() {
-    RacingCarGame.start()
+    val racingCarGame = RacingCarGame(MessagePrinterImpl, NumberReaderImpl)
+    racingCarGame.start()
 }

@@ -1,7 +1,9 @@
 package racingcar.ui
 
-object NumberReader {
-    fun read(): Int {
+import racingcar.application.NumberReader
+
+object NumberReaderImpl : NumberReader {
+    override fun read(): Int {
         val readLine = readLine()
         return convertToInt(readLine)
     }
