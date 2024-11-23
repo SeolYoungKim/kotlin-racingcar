@@ -26,6 +26,13 @@ class CarTest {
         assertThat(car.position).isEqualTo(0)
     }
 
+    @ParameterizedTest(name = "value = \"{0}\"")
+    @ValueSource(strings = ["", "     "])
+    fun `자동차 이름은 비어있을 수 없다`(name: String) {
+        assertThatThrownBy { Car(name = name) }
+            .isInstanceOf(IllegalArgumentException::class.java)
+    }
+
     @Test
     fun `자동차 이름은 5글자를 초과할 수 없다`() {
         assertThatThrownBy { Car(name = "이건딱6글자") }
