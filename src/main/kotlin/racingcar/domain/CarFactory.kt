@@ -5,4 +5,8 @@ object CarFactory {
     fun create(count: Int): List<Car> {
         return List(count) { Car(name = "김설영") }
     }
+
+    fun create(names: List<String>): List<Car> {
+        return names.map { name -> Car(name = name) }
+    }
 }
