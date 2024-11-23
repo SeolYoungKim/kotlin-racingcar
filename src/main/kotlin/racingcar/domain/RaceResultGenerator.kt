@@ -1,7 +1,7 @@
 package racingcar.domain
 
 
-object ResultGenerator {
+object RaceResultGenerator {
     private const val NAME_POSITION_SEPARATOR = " : "
     private const val POSITION_STRING = "-"
 

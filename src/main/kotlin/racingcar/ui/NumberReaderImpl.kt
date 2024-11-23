@@ -4,13 +4,8 @@ import racingcar.application.NumberReader
 
 object NumberReaderImpl : NumberReader {
     override fun read(): Int {
-        val readLine = readLine()
+        val readLine = ReaderUtils.readLine()
         return convertToInt(readLine)
-    }
-
-    private fun readLine(): String {
-        return readlnOrNull()
-            ?: throw IllegalArgumentException("null을 입력할 수 없습니다.")
     }
 
     private fun convertToInt(readLine: String): Int {

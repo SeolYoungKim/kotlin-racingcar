@@ -3,7 +3,7 @@ package racingcar.domain
 import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Test
 
-class ResultGeneratorTest {
+class RaceResultGeneratorTest {
     @Test
     fun `자동차 목록을 받아 각 자동차의 position 에 따라 결과 문자열을 생성한다`() {
         val firstCarName = "김씨"
@@ -17,7 +17,7 @@ class ResultGeneratorTest {
                 Car(position = 3, name = thirdCarName),
             )
 
-        val result = ResultGenerator.generate(cars)
+        val result = RaceResultGenerator.generate(cars)
 
         assertThat(result).isEqualTo(
             """

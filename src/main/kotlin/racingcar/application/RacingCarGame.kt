@@ -2,15 +2,17 @@ package racingcar.application
 
 import racingcar.domain.Car
 import racingcar.domain.CarFactory
-import racingcar.domain.ResultGenerator
+import racingcar.domain.RaceWinnerDecider
+import racingcar.domain.RaceResultGenerator
 import kotlin.random.Random
 
 class RacingCarGame(
     private val messagePrinter: MessagePrinter,
+    private val stringsReader: StringsReader,
     private val numberReader: NumberReader,
 ) {
     companion object {
-        private const val CAR_COUNT_QUESTION = "자동차 대수는 몇 대인가요?"
+        private const val CAR_COUNT_QUESTION = "경주할 자동차 이름을 입력하세요(이름은 쉼표(,)를 기준으로 구분)."
         private const val MOVE_ATTEMPT_COUNT_QUESTION = "시도할 횟수는 몇 회인가요?"
         private const val RESULT_MESSAGE = "실행 결과"
 
@@ -18,17 +20,18 @@ class RacingCarGame(
     }
 
     fun start() {
-        val carCount = readCarCount()
-        val cars = CarFactory.create(carCount)
+        val carNames = readCarNames()
+        val cars = CarFactory.create(carNames)
 
         val moveAttemptCount = readMoveAttemptCount()
 
         runRace(moveAttemptCount, cars)
+        decideWinners(cars)
     }
 
-    private fun readCarCount(): Int {
+    private fun readCarNames(): List<String> {
         messagePrinter.print(CAR_COUNT_QUESTION)
-        return numberReader.read()
+        return stringsReader.read()
     }
 
     private fun readMoveAttemptCount(): Int {
@@ -48,9 +51,15 @@ class RacingCarGame(
                 cars.forEach { car ->
                     car.moveOrStay(Random.nextInt(RANDOM_UPPER_BOUND))
                 }
-                ResultGenerator.generate(cars)
+                RaceResultGenerator.generate(cars)
             }
 
         messagePrinter.print(results)
+    }
+
+    private fun decideWinners(cars: List<Car>) {
+        val winners = RaceWinnerDecider.decide(cars)
+        val message = WinnerMessageGenerator.generate(winners)
+        messagePrinter.print(message)
     }
 }
