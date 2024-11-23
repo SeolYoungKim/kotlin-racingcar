@@ -1,7 +1,9 @@
 package racingcar.domain
 
+
 object ResultGenerator {
-    private const val RESULT_STRING = "-"
+    private const val NAME_POSITION_SEPARATOR = " : "
+    private const val POSITION_STRING = "-"
 
     fun generate(cars: List<Car>): String {
         val lineSeparator = System.lineSeparator()
@@ -11,6 +13,6 @@ object ResultGenerator {
     }
 
     private fun convertToResultFormat(car: Car): String {
-        return RESULT_STRING.repeat(car.position)
+        return car.name + NAME_POSITION_SEPARATOR + POSITION_STRING.repeat(car.position)
     }
 }
