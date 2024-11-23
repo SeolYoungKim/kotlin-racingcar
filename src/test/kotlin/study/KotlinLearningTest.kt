@@ -83,12 +83,13 @@ class KotlinLearningTest {
     fun `maxOf and maxWith and maxBy`() {
         val maxAge = 40
         val maxAgePerson = Person("", maxAge)
-        val people = listOf(
-            Person("", 10),
-            Person("", 20),
-            Person("", 30),
-            maxAgePerson,
-        )
+        val people =
+            listOf(
+                Person("", 10),
+                Person("", 20),
+                Person("", 30),
+                maxAgePerson,
+            )
 
         val maxBy = people.maxBy { person -> person.age!! }
         assertThat(maxBy).isSameAs(maxAgePerson)

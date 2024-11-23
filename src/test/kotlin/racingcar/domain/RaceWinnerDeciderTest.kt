@@ -10,7 +10,7 @@ class RaceWinnerDeciderTest {
         val winner1 = Car(name = "김씨", position = 10)
         val winner2 = Car(name = "이씨", position = 10)
         val looser = Car(name = "외톨이", position = 1)
-        val cars = listOf(winner1, winner2, looser,)
+        val cars = listOf(winner1, winner2, looser)
 
         val winners = RaceWinnerDecider.decide(cars)
 

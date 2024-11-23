@@ -2,8 +2,8 @@ package racingcar.application
 
 import racingcar.domain.Car
 import racingcar.domain.CarFactory
-import racingcar.domain.RaceWinnerDecider
 import racingcar.domain.RaceResultGenerator
+import racingcar.domain.RaceWinnerDecider
 import kotlin.random.Random
 
 class RacingCarGame(
