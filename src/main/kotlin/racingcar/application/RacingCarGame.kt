@@ -34,15 +34,19 @@ object RacingCarGame {
         return moveAttemptCount
     }
 
-    private fun runRace(moveAttemptCount: Int, cars: List<Car>) {
+    private fun runRace(
+        moveAttemptCount: Int,
+        cars: List<Car>,
+    ) {
         MessagePrinter.print(RESULT_MESSAGE)
 
-        val results = (1..moveAttemptCount).map {
-            cars.forEach { car ->
-                car.moveOrStay(Random.nextInt(RANDOM_UPPER_BOUND))
+        val results =
+            (1..moveAttemptCount).map {
+                cars.forEach { car ->
+                    car.moveOrStay(Random.nextInt(RANDOM_UPPER_BOUND))
+                }
+                ResultGenerator.generate(cars)
             }
-            ResultGenerator.generate(cars)
-        }
 
         MessagePrinter.print(results)
     }
