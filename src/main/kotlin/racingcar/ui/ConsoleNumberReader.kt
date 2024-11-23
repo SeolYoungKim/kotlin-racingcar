@@ -2,7 +2,7 @@ package racingcar.ui
 
 import racingcar.application.NumberReader
 
-object NumberReaderImpl : NumberReader {
+object ConsoleNumberReader : NumberReader {
     override fun read(): Int {
         val readLine = ReaderUtils.readLine()
         return convertToInt(readLine)

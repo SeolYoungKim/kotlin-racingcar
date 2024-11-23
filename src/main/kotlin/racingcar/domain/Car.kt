@@ -1,9 +1,8 @@
 package racingcar.domain
 
-class Car(var position: Int = 0, val name: String) {
-    companion object {
-        private const val THRESHOLD = 4
-    }
+class Car(position: Int = 0, val name: String) {
+    var position: Int = position
+        private set
 
     init {
         validateIsNotBlank()
@@ -30,4 +29,8 @@ class Car(var position: Int = 0, val name: String) {
     }
 
     private fun canMove(condition: Int) = condition >= THRESHOLD
+
+    companion object {
+        private const val THRESHOLD = 4
+    }
 }

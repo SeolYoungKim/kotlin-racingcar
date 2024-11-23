@@ -2,7 +2,7 @@ package racingcar.ui
 
 import racingcar.application.MessagePrinter
 
-object MessagePrinterImpl : MessagePrinter {
+object ConsoleMessagePrinter : MessagePrinter {
     override fun print(message: String) {
         println(message)
     }
