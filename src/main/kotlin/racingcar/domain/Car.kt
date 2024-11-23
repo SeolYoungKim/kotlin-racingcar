@@ -1,6 +1,6 @@
 package racingcar.domain
 
-class Car(var position: Int = 0) {
+class Car(var position: Int = 0, val name: String) {
     companion object {
         private const val THRESHOLD = 4
     }

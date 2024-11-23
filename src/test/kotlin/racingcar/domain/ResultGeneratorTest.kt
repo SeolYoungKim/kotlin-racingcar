@@ -8,9 +8,9 @@ class ResultGeneratorTest {
     fun `자동차 목록을 받아 각 자동차의 position 에 따라 결과 문자열을 생성한다`() {
         val cars =
             listOf(
-                Car(1),
-                Car(2),
-                Car(3),
+                Car(position = 1, name = "김설영"),
+                Car(position = 2, name = "김설영"),
+                Car(position = 3, name = "김설영"),
             )
 
         val result = ResultGenerator.generate(cars)
