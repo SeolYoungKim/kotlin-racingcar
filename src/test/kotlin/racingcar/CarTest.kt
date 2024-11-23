@@ -1,16 +1,28 @@
 package racingcar
 
-import org.assertj.core.api.Assertions
 import org.assertj.core.api.Assertions.*
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.ValueSource
 
 class CarTest {
-    @Test
-    fun `입력값 만큼 자동차를 이동시킨다`() {
+    @ParameterizedTest
+    @ValueSource(ints = [4, 5])
+    fun `값이 4 이상일 경우 position을 1 증가시킨다`(condition: Int) {
         val car = Car()
 
-        car.move(10)
+        car.moveOrStay(condition)
 
-        assertThat(car.position).isEqualTo(10)
+        assertThat(car.position).isEqualTo(1)
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = [2, 3])
+    fun `값이 4 미만일 경우 position은 그대로 유지된다`(condition: Int) {
+        val car = Car()
+
+        car.moveOrStay(condition)
+
+        assertThat(car.position).isEqualTo(0)
     }
 }

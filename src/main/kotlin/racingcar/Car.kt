@@ -1,7 +1,13 @@
 package racingcar
 
 class Car(var position: Int = 0) {
-    fun move(distance: Int) {
-        position += distance
+    companion object {
+        private const val THRESHOLD = 4
+    }
+
+    fun moveOrStay(condition: Int) {
+        if (condition >= THRESHOLD) {
+            position++
+        }
     }
 }
