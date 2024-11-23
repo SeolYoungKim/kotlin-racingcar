@@ -6,8 +6,10 @@ class Car(var position: Int = 0) {
     }
 
     fun moveOrStay(condition: Int) {
-        if (condition >= THRESHOLD) {
+        if (canMove(condition)) {
             position++
         }
     }
+
+    private fun canMove(condition: Int) = condition >= THRESHOLD
 }
