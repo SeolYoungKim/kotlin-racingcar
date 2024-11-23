@@ -1,4 +1,4 @@
-package racingcar
+package racingcar.ui
 
 object MessagePrinter {
     fun print(message: String) {

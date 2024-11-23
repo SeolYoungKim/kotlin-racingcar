@@ -1,5 +1,7 @@
-package racingcar
+package racingcar.domain
 
+import racingcar.ui.MessagePrinter
+import racingcar.ui.NumberReader
 import kotlin.random.Random
 
 object RacingCarGame {

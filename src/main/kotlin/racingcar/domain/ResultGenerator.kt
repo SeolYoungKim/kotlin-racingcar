@@ -1,4 +1,4 @@
-package racingcar
+package racingcar.domain
 
 object ResultGenerator {
     private const val RESULT_STRING = "-"
