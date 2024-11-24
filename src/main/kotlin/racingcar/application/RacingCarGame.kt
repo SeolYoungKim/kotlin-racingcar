@@ -27,8 +27,7 @@ class RacingCarGame(
 
     private fun readMoveAttemptCount(): Int {
         messagePrinter.printMoveAttemptCountQuestion()
-        val moveAttemptCount = numberReader.read()
-        return moveAttemptCount
+        return numberReader.read()
     }
 
     private fun runRace(
@@ -37,13 +36,12 @@ class RacingCarGame(
     ) {
         messagePrinter.printResultMessage()
 
-        val results =
-            (1..moveAttemptCount).map {
-                cars.forEach { car ->
-                    car.moveOrStay(Random.nextInt(RANDOM_UPPER_BOUND))
-                }
-                messagePrinter.printRaceResultMessage(cars)
+        repeat(moveAttemptCount) {
+            cars.forEach { car ->
+                car.moveOrStay(Random.nextInt(RANDOM_UPPER_BOUND))
             }
+            messagePrinter.printRaceResultMessage(cars)
+        }
     }
 
     private fun decideWinners(cars: List<Car>) {
