@@ -2,8 +2,8 @@ package racingcar.application
 
 import racingcar.domain.Car
 import racingcar.domain.CarFactory
+import racingcar.domain.CarMovementRule
 import racingcar.domain.RaceWinnerDecider
-import kotlin.random.Random
 
 class RacingCarGame(
     private val messagePrinter: MessagePrinter,
@@ -37,9 +37,7 @@ class RacingCarGame(
         messagePrinter.printResultMessage()
 
         repeat(moveAttemptCount) {
-            cars.forEach { car ->
-                car.moveOrStay(Random.nextInt(RANDOM_UPPER_BOUND))
-            }
+            CarMovementRule.apply(cars)
             messagePrinter.printRaceResultMessage(cars)
         }
     }
@@ -47,9 +45,5 @@ class RacingCarGame(
     private fun decideWinners(cars: List<Car>) {
         val winners = RaceWinnerDecider.decide(cars)
         messagePrinter.printWinners(winners)
-    }
-
-    companion object {
-        private const val RANDOM_UPPER_BOUND = 10
     }
 }
