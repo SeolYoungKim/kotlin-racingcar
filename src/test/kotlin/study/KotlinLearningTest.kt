@@ -78,4 +78,26 @@ class KotlinLearningTest {
         assertThat(result1).isEqualTo(listOf(1, 3, 5, 7))
         assertThat(result2).isEqualTo(listOf(1, 3, 5, 7))
     }
+
+    @Test
+    fun `maxOf and maxWith and maxBy`() {
+        val maxAge = 40
+        val maxAgePerson = Person("", maxAge)
+        val people =
+            listOf(
+                Person("", 10),
+                Person("", 20),
+                Person("", 30),
+                maxAgePerson,
+            )
+
+        val maxBy = people.maxBy { person -> person.age!! }
+        assertThat(maxBy).isSameAs(maxAgePerson)
+
+        val maxOf = people.maxOf { person -> person.age!! }
+        assertThat(maxOf).isEqualTo(maxAge)
+
+        val maxWith = people.maxWith(compareBy { person -> person.age!! })
+        assertThat(maxWith).isSameAs(maxAgePerson)
+    }
 }

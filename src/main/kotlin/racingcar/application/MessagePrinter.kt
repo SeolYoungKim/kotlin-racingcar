@@ -1,7 +1,15 @@
 package racingcar.application
 
-interface MessagePrinter {
-    fun print(message: String)
+import racingcar.domain.Car
 
-    fun print(messages: List<String>)
+interface MessagePrinter {
+    fun printCarCountQuestion()
+
+    fun printMoveAttemptCountQuestion()
+
+    fun printResultMessage()
+
+    fun printRaceResultMessage(cars: List<Car>)
+
+    fun printWinners(winners: List<Car>)
 }
