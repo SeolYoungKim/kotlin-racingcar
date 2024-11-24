@@ -5,17 +5,17 @@ class Car(position: Int = 0, val name: String) {
         private set
 
     init {
-        validateIsNotBlank()
-        validateLength()
+        validateNameIsNotBlank()
+        validateNameLength()
     }
 
-    private fun validateIsNotBlank() {
+    private fun validateNameIsNotBlank() {
         if (name.isBlank()) {
             throw IllegalArgumentException("자동차 이름은 비어있을 수 없습니다.")
         }
     }
 
-    private fun validateLength() {
+    private fun validateNameLength() {
         val nameLength = name.length
         if (nameLength > NAME_LENGTH_LIMIT) {
             throw IllegalArgumentException("자동차 이름은 5글자를 초과할 수 없습니다. 현재 입력 = $name, 글자 수 = $nameLength")
