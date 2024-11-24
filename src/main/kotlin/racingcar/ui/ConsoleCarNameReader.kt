@@ -1,8 +1,8 @@
 package racingcar.ui
 
-import racingcar.application.StringsReader
+import racingcar.application.CarNameReader
 
-object StringsReaderImpl : StringsReader {
+object ConsoleCarNameReader : CarNameReader {
     override fun read(): List<String> {
         val readLine = ReaderUtils.readLine()
         return readLine.split(",")

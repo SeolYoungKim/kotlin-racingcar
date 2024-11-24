@@ -7,7 +7,7 @@ import kotlin.random.Random
 
 class RacingCarGame(
     private val messagePrinter: MessagePrinter,
-    private val stringsReader: StringsReader,
+    private val carNameReader: CarNameReader,
     private val numberReader: NumberReader,
 ) {
     fun start() {
@@ -22,7 +22,7 @@ class RacingCarGame(
 
     private fun readCarNames(): List<String> {
         messagePrinter.printCarCountQuestion()
-        return stringsReader.read()
+        return carNameReader.read()
     }
 
     private fun readMoveAttemptCount(): Int {
