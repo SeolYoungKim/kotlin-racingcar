@@ -3,7 +3,7 @@ package racingcar.application
 import racingcar.domain.Car
 
 interface MessagePrinter {
-    fun printCarCountQuestion()
+    fun printCarNameQuestion()
 
     fun printMoveAttemptCountQuestion()
 

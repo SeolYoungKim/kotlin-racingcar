@@ -8,7 +8,7 @@ object ConsoleMessagePrinter : MessagePrinter {
     private const val MOVE_ATTEMPT_COUNT_QUESTION = "시도할 횟수는 몇 회인가요?"
     private const val RESULT_MESSAGE = "실행 결과"
 
-    override fun printCarCountQuestion() {
+    override fun printCarNameQuestion() {
         println(CAR_COUNT_QUESTION)
     }
 

@@ -8,26 +8,16 @@ import racingcar.domain.RaceWinnerDecider
 class RacingCarGame(
     private val messagePrinter: MessagePrinter,
     private val carNameReader: CarNameReader,
-    private val numberReader: NumberReader,
+    private val moveAttemptCountReader: MoveAttemptCountReader,
 ) {
     fun start() {
-        val carNames = readCarNames()
+        val carNames = carNameReader.read()
         val cars = CarFactory.create(carNames)
 
-        val moveAttemptCount = readMoveAttemptCount()
+        val moveAttemptCount = moveAttemptCountReader.read()
 
         runRace(moveAttemptCount, cars)
         decideWinners(cars)
-    }
-
-    private fun readCarNames(): List<String> {
-        messagePrinter.printCarCountQuestion()
-        return carNameReader.read()
-    }
-
-    private fun readMoveAttemptCount(): Int {
-        messagePrinter.printMoveAttemptCountQuestion()
-        return numberReader.read()
     }
 
     private fun runRace(
