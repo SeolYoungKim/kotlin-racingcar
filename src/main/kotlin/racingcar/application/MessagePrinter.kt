@@ -1,7 +1,5 @@
 package racingcar.application
 
-import racingcar.domain.Car
-
 interface MessagePrinter {
     fun printCarNameQuestion()
 
@@ -9,7 +7,7 @@ interface MessagePrinter {
 
     fun printResultMessage()
 
-    fun printRaceResultMessage(cars: List<Car>)
+    fun printRaceResultMessage(raceResults: RaceResults)
 
-    fun printWinners(winners: List<Car>)
+    fun printWinners(winners: Winners)
 }

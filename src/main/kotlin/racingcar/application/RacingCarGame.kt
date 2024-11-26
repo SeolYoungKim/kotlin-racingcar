@@ -28,12 +28,12 @@ class RacingCarGame(
 
         repeat(moveAttemptCount) {
             CarMovementRule.apply(cars)
-            messagePrinter.printRaceResultMessage(cars)
+            messagePrinter.printRaceResultMessage(RaceResults.from(cars))
         }
     }
 
     private fun decideWinners(cars: List<Car>) {
         val winners = RaceWinnerDecider.decide(cars)
-        messagePrinter.printWinners(winners)
+        messagePrinter.printWinners(Winners.from(winners))
     }
 }
